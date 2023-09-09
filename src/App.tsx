@@ -1,7 +1,13 @@
+import { Modal } from './components/UI/Modal/Modal';
 import { Main } from './pages/Main/Main';
 
 function App() {
-  return <Main />;
+  return (
+    <>
+      <Modal />
+      <Main />
+    </>
+  );
 }
 
 export default App;

@@ -1,0 +1,37 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint==laptop {
+    @media only screen and (max-width: 1200px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==tablet {
+    @media only screen and (max-width: 992px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==tabletS {
+    @media only screen and (max-width: 768px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==mobile {
+    @media only screen and (max-width: 600px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==mobileS {
+    @media only screen and (max-width: 425px) {
+      @content;
+    }
+  }
+}
+
+@mixin max_custom($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}

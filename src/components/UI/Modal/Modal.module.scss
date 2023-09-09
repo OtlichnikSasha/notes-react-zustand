@@ -1,0 +1,112 @@
+.modal {
+  position: relative;
+  width: auto;
+  display: flex;
+  align-items: center;
+  margin: 1.75rem auto;
+  min-height: calc(100% - 3.5rem);
+  min-width: 400px;
+  max-height: 80vh;
+  max-width: 500px;
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 101;
+    background: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    &::-webkit-scrollbar {
+      scrollbar-width: none;
+      -webkit-appearance: none;
+      width: 0;
+      height: 0;
+      display: none;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    z-index: 11;
+    background-color: #ffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(37, 33, 41, 0.04), 0 0 6px rgba(37, 33, 41, 0.04);
+    max-height: 80vh;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      scrollbar-width: none;
+      -webkit-appearance: none;
+      width: 0;
+      height: 0;
+      display: none;
+    }
+  }
+
+  &__closeButton {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #ffff;
+    z-index: 20;
+    color: #262626;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+
+    &:hover {
+      background: rgba(13, 16, 25, 0.06);
+      transition: background 0.3s;
+    }
+
+    svg {
+      fill: #ffff;
+      transition: fill 0.3s;
+      width: 16px;
+      height: 16px;
+
+      path {
+        fill: #262626;
+        transition: fill 0.3s;
+      }
+    }
+  }
+
+  &__header {
+    padding: 16px 32px 0 32px;
+    position: relative;
+  }
+
+  &__title {
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.52px;
+    line-height: 36px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__body {
+    padding: 32px;
+    box-sizing: border-box;
+    position: relative;
+  }
+}
