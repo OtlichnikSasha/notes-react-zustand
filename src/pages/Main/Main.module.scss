@@ -7,10 +7,27 @@
   justify-content: center;
 }
 
+.notFound__create {
+  @include text_14_16_400;
+  text-decoration: underline;
+}
+
 .notesBlock {
   border-radius: 12px;
   box-shadow: 0 0 4px #5966840f, 0 8px 24px #5966841e;
   padding: 20px 16px;
   min-width: 70%;
-  min-height: 50%;
+  height: 50%;
+}
+
+.notes {
+  overflow-y: scroll;
+  height: 100%;
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    gap: 8px;
+  }
 }

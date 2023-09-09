@@ -9,7 +9,7 @@ export const CreateNoteModal = () => {
   const nameRef = useRef<HTMLInputElement>(null);
   const addNote = useNotesStore((state) => state.addNote);
 
-  const handleCreateNote = () => {
+  const handleCreateNote = (): void => {
     const createdDate = new Date();
     addNote({
       createdAt: createdDate,

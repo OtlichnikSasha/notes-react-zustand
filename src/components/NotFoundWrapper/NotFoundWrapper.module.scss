@@ -2,4 +2,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  &__icon {
+    width: 96px;
+    height: 96px;
+  }
+
+  &__title {
+    @include text_32_36_600;
+    margin: 16px 0 24px 0;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__description {
+    @include text_16_24_400;
+  }
 }

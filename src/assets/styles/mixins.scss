@@ -35,3 +35,31 @@
     @content;
   }
 }
+
+@mixin text_14_16_400 {
+  font-family: var(--Primary_Font_Family);
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+@mixin text_16_24_400 {
+  font-family: var(--Primary_Font_Family);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+@mixin text_24_32_600 {
+  font-family: var(--Primary_Font_Family);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+
+@mixin text_32_36_600 {
+  font-family: var(--Primary_Font_Family);
+  font-size: 32px;
+  line-height: 36px;
+  font-weight: 600;
+}
