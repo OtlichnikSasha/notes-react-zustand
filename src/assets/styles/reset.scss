@@ -1,0 +1,57 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  &:focus {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+input,
+button,
+select,
+textarea {
+  border: none;
+  outline: none;
+  background: transparent;
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
