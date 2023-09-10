@@ -14,15 +14,30 @@
 
 .notesBlock {
   border-radius: 12px;
-  box-shadow: 0 0 4px #5966840f, 0 8px 24px #5966841e;
-  padding: 20px 16px;
-  min-width: 70%;
+  padding: 20px 8px 20px 16px;
+  width: 70%;
   height: 50%;
+  background: #fff;
+  box-shadow: inset 0 1px 5px #3390ec;
 }
 
 .notes {
   overflow-y: scroll;
   height: 100%;
+  padding-right: 5px;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+
+    &-track {
+      background: #a4a4a4;
+      border-radius: 512px;
+    }
+
+    &-thumb {
+      background: #3f3f3f;
+    }
+  }
 
   &__list {
     display: grid;

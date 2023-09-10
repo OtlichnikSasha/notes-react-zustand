@@ -4,4 +4,14 @@
 
 body {
   font-family: var(--Primary_Font_Family);
+  background: linear-gradient(#6489e6, #9dc4fa, #9198e5);
+}
+
+:global {
+  .tox-notifications-container {
+    display: none;
+  }
+  .tox-notification {
+    display: none;
+  }
 }

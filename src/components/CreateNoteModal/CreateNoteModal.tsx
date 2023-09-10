@@ -3,6 +3,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import { Button } from '../UI/Button/Button';
 import { useNotesStore } from '@/store/notesStore';
 import { enqueueSnackbar } from 'notistack';
+import { Input } from '../UI/Input/Input';
 
 export const CreateNoteModal = () => {
   const editorRef = useRef<any>(null);
@@ -14,7 +15,7 @@ export const CreateNoteModal = () => {
     addNote({
       createdAt: createdDate,
       name: nameRef?.current?.value || '',
-      noteText: '',
+      noteText: 'авыаываывавыавы',
       updatedAt: createdDate,
     });
     enqueueSnackbar('Заметка успешно создана', {
@@ -24,7 +25,7 @@ export const CreateNoteModal = () => {
 
   return (
     <div>
-      <input placeholder='Введите название' ref={nameRef} />
+      <Input placeholder='Введите название' />
 
       <Editor
         onInit={(evt, editor) => {

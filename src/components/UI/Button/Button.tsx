@@ -1,19 +1,23 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps, FC } from 'react';
+import { ButtonHTMLAttributes, FC } from 'react';
 import styles from './Button.module.scss';
 import cn from 'classnames';
+import { motion } from 'framer-motion';
 
-export const Button: FC<
-  DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
-> = ({ onClick, className, disabled, children, ...rest }) => {
+export const Button: FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({
+  onClick,
+  className,
+  disabled,
+  children,
+}) => {
   return (
-    <button
+    <motion.button
       className={cn(styles.button, className)}
       onClick={onClick}
       disabled={disabled}
-      {...rest}
+      whileTap={{ scale: 0.95 }}
     >
       {children}
-    </button>
+    </motion.button>
   );
 };
 

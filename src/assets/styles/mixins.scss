@@ -36,6 +36,13 @@
   }
 }
 
+@mixin text_12_14_400 {
+  font-family: var(--Primary_Font_Family);
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 400;
+}
+
 @mixin text_14_16_400 {
   font-family: var(--Primary_Font_Family);
   font-size: 14px;
@@ -48,6 +55,13 @@
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
+}
+
+@mixin text_16_24_600 {
+  font-family: var(--Primary_Font_Family);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
 }
 
 @mixin text_24_32_600 {

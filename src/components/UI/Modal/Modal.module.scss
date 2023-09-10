@@ -9,6 +9,19 @@
   max-height: 80vh;
   max-width: 500px;
 
+  @include respond(mobile) {
+    padding: 0 10px;
+  }
+
+  @include respond(mobileS) {
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    min-width: 100vw;
+    border-radius: 0px;
+  }
+
   &__overlay {
     position: fixed;
     top: 0;
@@ -44,6 +57,14 @@
     box-shadow: 0 8px 16px rgba(37, 33, 41, 0.04), 0 0 6px rgba(37, 33, 41, 0.04);
     max-height: 80vh;
     overflow-y: scroll;
+
+    @include respond(mobileS) {
+      width: 100vw;
+      height: 100vh;
+      min-height: 100vh;
+      min-width: 100vw;
+      border-radius: 0px;
+    }
 
     &::-webkit-scrollbar {
       scrollbar-width: none;
@@ -102,6 +123,12 @@
     width: 100%;
     margin: 0;
     padding: 0;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
   }
 
   &__body {

@@ -21,13 +21,21 @@ export const NoteItem: FC<INoteItemProps> = ({ note }) => {
   };
 
   return (
-    <article onClick={handleOpenEditModal} className={styles.note}>
-      {dayjs(note.createdAt).locale('ru').format(dateFormat)}
-      <p>{note.name}</p>
+    <article className={styles.note} onClick={handleOpenEditModal}>
+      <p className={styles.note__name}>{note.name}</p>
 
-      {note.createdAt !== note.updatedAt && (
-        <p>Редактирована {dayjs(note.updatedAt).locale('ru').format(dateFormat)}</p>
-      )}
+      <div className={styles.note__content}>
+        {note.noteText ? (
+          <p
+            className={styles.note__description}
+            dangerouslySetInnerHTML={{ __html: note.noteText }}
+          />
+        ) : (
+          <p className={styles.note__description}>Нет текста</p>
+        )}
+      </div>
+
+      <p className={styles.note__date}>{dayjs(note.updatedAt).locale('ru').format(dateFormat)}</p>
     </article>
   );
 };

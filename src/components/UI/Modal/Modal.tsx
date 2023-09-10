@@ -65,4 +65,4 @@ export const Modal = () => {
   );
 };
 
-Modal.displayName = 'modal-window';
+Modal.displayName = 'dialog';
