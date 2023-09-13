@@ -11,7 +11,9 @@ export const Button: FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({
 }) => {
   return (
     <motion.button
-      className={cn(styles.button, className)}
+      className={cn(styles.button, className, {
+        [styles.disabled]: disabled,
+      })}
       onClick={onClick}
       disabled={disabled}
       whileTap={{ scale: 0.95 }}

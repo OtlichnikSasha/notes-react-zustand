@@ -18,6 +18,7 @@ interface ModalActions {
 interface IOption {
   title?: string;
   overlayClassName?: string;
+  bodyClassName?: string;
   containerClassName?: string;
   withCloseButton?: boolean;
 }

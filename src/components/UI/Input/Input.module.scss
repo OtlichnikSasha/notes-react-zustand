@@ -12,6 +12,10 @@
     &:focus {
       border: 1px solid var(--Focus_Border_Color);
       transition: border 0.3s;
+
+      &::placeholder {
+        display: none;
+      }
     }
   }
 }

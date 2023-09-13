@@ -1,0 +1,11 @@
+.noteHeader {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 12px;
+
+  &__text {
+    @include text_12_14_400;
+    color: var(--Secondary_Color);
+  }
+}

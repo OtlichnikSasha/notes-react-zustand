@@ -9,7 +9,14 @@
 
 .notFound__create {
   @include text_14_16_400;
+  color: var(--Primary_Color);
   text-decoration: underline;
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--Accent_Color);
+    transition: color 0.3s;
+  }
 }
 
 .notesBlock {
@@ -17,8 +24,19 @@
   padding: 20px 8px 20px 16px;
   width: 70%;
   height: 50%;
-  background: #fff;
-  box-shadow: inset 0 1px 5px #3390ec;
+  background: rgba(121, 133, 211, 0.2);
+  box-shadow: inset 0px -4px 12px rgba(69, 81, 160, 0.2), inset 0px 1px 6px rgba(22, 27, 60, 0.6),
+    0 2px 40px rgba(69, 81, 160, 0.1);
+
+  @include max_custom('1050px') {
+    width: 90%;
+  }
+
+  @include respond(mobileS) {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+  }
 }
 
 .notes {
@@ -30,12 +48,13 @@
     width: 4px;
 
     &-track {
-      background: #a4a4a4;
+      background: #6196f9;
       border-radius: 512px;
     }
 
     &-thumb {
-      background: #3f3f3f;
+      background: #4f4e4e;
+      border-radius: 512px;
     }
   }
 
@@ -44,5 +63,17 @@
     grid-template-columns: repeat(4, 1fr);
     align-items: center;
     gap: 8px;
+
+    @include respond(tablet) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include respond(mobile) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond(mobileS) {
+      grid-template-columns: 1fr;
+    }
   }
 }

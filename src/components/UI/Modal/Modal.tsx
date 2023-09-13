@@ -31,7 +31,7 @@ export const Modal = () => {
           aria-hidden
           onClick={closeModal}
         >
-          <div className={styles.modal}>
+          <div className={cn(styles.modal, options?.bodyClassName)}>
             <div
               className={cn(options?.containerClassName, styles.modal__content)}
               onClick={(e) => e.stopPropagation()}

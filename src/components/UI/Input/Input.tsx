@@ -4,10 +4,18 @@ import styles from './Input.module.scss';
 
 export const Input: FC<
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
-> = ({ disabled, className, ...rest }) => {
+> = ({ disabled, className, value, onChange, ...rest }) => {
   return (
     <div className={styles.inputWrapper}>
-      <input disabled={disabled} className={cn(styles.input, className)} {...rest} />
+      <input
+        value={value}
+        disabled={disabled}
+        onChange={onChange}
+        className={cn(styles.input, className)}
+        {...rest}
+      />
     </div>
   );
 };
+
+Input.displayName = 'input';

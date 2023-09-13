@@ -20,6 +20,7 @@
     min-height: 100vh;
     min-width: 100vw;
     border-radius: 0px;
+    padding: 0;
   }
 
   &__overlay {
@@ -28,7 +29,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 101;
+    z-index: 1000;
     background: rgba(0, 0, 0, 0.3);
     width: 100%;
     height: 100%;
@@ -115,11 +116,7 @@
   }
 
   &__title {
-    font-family: 'Inter', sans-serif;
-    font-size: 26px;
-    font-weight: 600;
-    letter-spacing: -0.52px;
-    line-height: 36px;
+    @include text_26_36_600;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -129,11 +126,21 @@
     -webkit-line-clamp: 1;
     line-clamp: 1;
     -webkit-box-orient: vertical;
+    color: var(--Dark_Primary_Color);
+
+    @include respond(mobileS) {
+      @include text_22_28_600;
+    }
   }
 
   &__body {
     padding: 32px;
     box-sizing: border-box;
     position: relative;
+    height: 100%;
+
+    @include respond(mobileS) {
+      padding: 16px;
+    }
   }
 }

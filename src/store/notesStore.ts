@@ -1,35 +1,49 @@
 import { create } from 'zustand';
-import { immer } from 'zustand/middleware/immer';
+import { persist } from 'zustand/middleware';
+
+const LOCALSTORAGE_KEY = 'notes';
 
 interface NotesStoreState {
   notes: NoteModel[];
 }
 
 interface NotesStoreActions {
-  addNote: (note: Omit<NoteModel, 'id'>) => void;
+  addNote: (noteData: Pick<NoteModel, 'name'> & Pick<NoteModel, 'noteText'>) => void;
   editNote: (note: NoteModel) => void;
-  removeNote: (note: NoteModel) => void;
+  removeNote: (id: NoteModel['id']) => void;
 }
 
 type INotesStore = NotesStoreState & NotesStoreActions;
 
-export const useNotesStore = create(
-  immer<INotesStore>((set) => ({
-    notes: [],
-    addNote: (note) => {
-      set((state) => {
-        state.notes.unshift({ ...note, id: Date.now() });
-      });
+export const useNotesStore = create<INotesStore>()(
+  persist(
+    (set, get) => ({
+      notes: [],
+      addNote: (note) =>
+        set({
+          notes: get().notes.concat({
+            ...note,
+            id: Date.now(),
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          }),
+        }),
+      editNote: (note) => {
+        return set({
+          notes: get().notes.map((stateNote) => {
+            if (stateNote.id === note.id) return { ...note, updatedAt: new Date() };
+            return stateNote;
+          }),
+        });
+      },
+      removeNote: (id) => {
+        return set({
+          notes: get().notes.filter((stateNote) => stateNote.id !== id),
+        });
+      },
+    }),
+    {
+      name: LOCALSTORAGE_KEY,
     },
-    editNote: (note) => {
-      set((state) => {
-        state.notes.concat({ ...note, id: Date.now() });
-      });
-    },
-    removeNote: (note) => {
-      set((state) => {
-        state.notes.filter((stateNote) => stateNote.id !== note.id);
-      });
-    },
-  })),
+  ),
 );

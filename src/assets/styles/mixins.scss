@@ -6,12 +6,6 @@
   }
 
   @if $breakpoint==tablet {
-    @media only screen and (max-width: 992px) {
-      @content;
-    }
-  }
-
-  @if $breakpoint==tabletS {
     @media only screen and (max-width: 768px) {
       @content;
     }
@@ -69,6 +63,22 @@
   font-size: 24px;
   line-height: 32px;
   font-weight: 600;
+}
+
+@mixin text_26_36_600 {
+  font-family: var(--Primary_Font_Family);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.52px;
+  line-height: 36px;
+}
+
+@mixin text_22_28_600 {
+  font-family: var(--Primary_Font_Family);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.36px;
+  line-height: 28px;
 }
 
 @mixin text_32_36_600 {

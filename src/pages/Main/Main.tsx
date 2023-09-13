@@ -6,6 +6,7 @@ import { useNotesStore } from '@/store/notesStore';
 import styles from './Main.module.scss';
 import { useModalStore } from '@/store/modalStore';
 import { CreateNoteModal } from '@/components/CreateNoteModal/CreateNoteModal';
+import { ReactComponent as IconNote } from '@/assets/images/icons/icon-note.svg';
 
 export const Main = () => {
   const notes = useNotesStore((state) => state.notes);
@@ -22,7 +23,7 @@ export const Main = () => {
       <main className={styles.main}>
         <Container className={styles.notesBlock}>
           {!notes.length ? (
-            <NotFoundWrapper title='Вы не создали ни одной заметки'>
+            <NotFoundWrapper title='Вы не создали ни одной заметки' icon={<IconNote />}>
               <button className={styles.notFound__create} onClick={handleOpenCreateModal}>
                 <span>Создать заметку</span>
               </button>

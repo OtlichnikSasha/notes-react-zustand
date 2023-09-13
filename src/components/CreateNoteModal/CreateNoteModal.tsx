@@ -1,75 +1,61 @@
-import { useRef } from 'react';
-import { Editor } from '@tinymce/tinymce-react';
+import { ChangeEvent, useRef, useState } from 'react';
 import { Button } from '../UI/Button/Button';
 import { useNotesStore } from '@/store/notesStore';
 import { enqueueSnackbar } from 'notistack';
 import { Input } from '../UI/Input/Input';
+import styles from './CreateNoteModal.module.scss';
+import { useModalStore } from '@/store/modalStore';
+import { NoteModalHeader } from '../NoteModalHeader/NoteModalHeader';
+import { Editor } from '@tinymce/tinymce-react';
+import { init } from '../UI/TinyEditor/TinyEditor.constants';
+import { countSymbolHelper } from '@/helpers/countSymbol.helper';
+
+type NoteForm = Pick<NoteModel, 'name'> & Pick<NoteModel, 'noteText'>;
 
 export const CreateNoteModal = () => {
-  const editorRef = useRef<any>(null);
-  const nameRef = useRef<HTMLInputElement>(null);
+  const tinyEditorRef = useRef<Editor['editor'] | null>(null);
+  const [noteForm, setNoteForm] = useState<NoteForm>({} as NoteForm);
   const addNote = useNotesStore((state) => state.addNote);
+  const closeModal = useModalStore((state) => state.closeModal);
 
   const handleCreateNote = (): void => {
-    const createdDate = new Date();
-    addNote({
-      createdAt: createdDate,
-      name: nameRef?.current?.value || '',
-      noteText: 'авыаываывавыавы',
-      updatedAt: createdDate,
-    });
+    addNote(noteForm);
     enqueueSnackbar('Заметка успешно создана', {
       variant: 'success',
     });
+    setNoteForm({} as NoteForm);
+    closeModal();
+  };
+
+  const handleChangeTitle = (event: ChangeEvent<HTMLInputElement>): void => {
+    if (event.target.value.length < 50) setNoteForm({ ...noteForm, name: event.target.value });
+  };
+
+  const handleChangeEditor = (): void => {
+    setNoteForm({ ...noteForm, noteText: tinyEditorRef?.current?.getContent() || '' });
   };
 
   return (
-    <div>
-      <Input placeholder='Введите название' />
+    <div className={styles.modal}>
+      <div className={styles.modal__form}>
+        <div>
+          <Input placeholder='Заголовок' value={noteForm?.name} onChange={handleChangeTitle} />
+          <NoteModalHeader
+            date={new Date()}
+            symbolCount={countSymbolHelper(noteForm?.name || '', noteForm?.noteText || '')}
+          />
+        </div>
+        <Editor
+          onInit={(_, editor) => (tinyEditorRef.current = editor)}
+          onChange={handleChangeEditor}
+          initialValue=''
+          init={init}
+        />
+      </div>
 
-      <Editor
-        onInit={(evt, editor) => {
-          console.log(evt);
-          editorRef.current = editor;
-        }}
-        onChange={(sth) => console.log(sth)}
-        initialValue={''}
-        init={{
-          height: 250,
-          menubar: false,
-          plugins: [
-            'a11ychecker',
-            'advcode',
-            'advlist',
-            'anchor',
-            'autolink',
-            'codesample',
-            'fullscreen',
-            'help',
-            'image',
-            'editimage',
-            'tinydrive',
-            'lists',
-            'link',
-            'media',
-            'powerpaste',
-            'preview',
-            'searchreplace',
-            'table',
-            'template',
-            'tinymcespellchecker',
-            'visualblocks',
-            'wordcount',
-          ],
-          toolbar:
-            'insertfile a11ycheck undo redo | bold italic | forecolor backcolor | ' +
-            'template codesample | alignleft aligncenter alignright alignjustify ' +
-            '| bullist numlist | link image',
-          content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
-        }}
-      />
-
-      <Button onClick={handleCreateNote}>Создать заметку</Button>
+      <Button disabled={noteForm?.name?.length < 1} onClick={handleCreateNote}>
+        Создать заметку
+      </Button>
     </div>
   );
 };

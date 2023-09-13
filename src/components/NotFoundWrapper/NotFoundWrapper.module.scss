@@ -2,15 +2,43 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+  justify-content: center;
 
   &__icon {
     width: 96px;
     height: 96px;
+
+    @include respond(tablet) {
+      width: 72px;
+      height: 72px;
+    }
+
+    @include respond(mobile) {
+      width: 64px;
+      height: 64px;
+    }
+
+    @include respond(mobileS) {
+      width: 56px;
+      height: 56px;
+    }
+
+    svg {
+      fill: var(--Accent_Background);
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__title {
     @include text_32_36_600;
     margin: 16px 0 24px 0;
+    text-align: center;
+
+    @include respond(mobileS) {
+      @include text_26_36_600;
+    }
 
     svg {
       width: 100%;
