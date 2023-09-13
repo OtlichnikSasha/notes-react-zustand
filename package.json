@@ -1,6 +1,6 @@
 {
   "name": "notes-react-zustand",
-  "homepage": "https://otlichniksasha.github.io/notes-react-zustand/",
+  "homepage": "https://otlichniksasha.github.io/NotesReactZustand/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tinymce/tinymce-react": "^4.3.0",
@@ -19,7 +19,6 @@
     "classnames": "^2.3.2",
     "dayjs": "^1.11.9",
     "framer-motion": "^10.16.4",
-    "gh-pages": "^6.0.0",
     "immer": "^10.0.2",
     "notistack": "^3.0.1",
     "react": "^18.2.0",
@@ -39,6 +38,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "gh-pages": "^6.0.0"
   }
 }
