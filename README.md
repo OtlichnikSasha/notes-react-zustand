@@ -1,27 +1,14 @@
-# React + TypeScript + Vite
+Приложение заметки. Pet проект.
+Стек:
+ - React + Typescript
+ - SASS modules
+ - Vite
+ - framer-motion
+ - zustand (state-manager)
+ - axios
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Реализовано создание, удаление, вывод и редактирование заметок. Заметки хранятся в localstorage (добавляются, меняются и извлекаются автоматически, с помощью middleware от zustand - persist)
+Для редактирования и создания заметок сделано модальное окно. Для написания контента (с возможностью делать текст жирным, курсивным и т.п) использовалась библиотека tinymce
+Для анимаций (открытие модального окна, клик на кнопки, анимация удаления карточки) использовался framer-motion
+В качестве сборщика использовался vite (сделан конфиг для импорта svg, как компонентов, добавлен autoprefixer и автоматический импорт файла с миксинами ко всем scss файлам)
+Приложение выложено на gh-pages: https://otlichniksasha.github.io/notes-react-zustand/
