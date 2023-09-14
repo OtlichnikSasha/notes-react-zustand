@@ -9,6 +9,7 @@ import { NoteModalHeader } from '../NoteModalHeader/NoteModalHeader';
 import { init } from '../UI/TinyEditor/TinyEditor.constants';
 import { useModalStore } from '@/store/modalStore';
 import { countSymbolHelper } from '@/helpers/countSymbol.helper';
+import { Skeleton } from '../UI/Skeleton/Skeleton';
 
 interface IEditNoteProps {
   note: NoteModel;
@@ -18,6 +19,7 @@ type NoteForm = Pick<NoteModel, 'name'> & Pick<NoteModel, 'noteText'>;
 
 export const EditNoteModal: FC<IEditNoteProps> = ({ note }) => {
   const tinyEditorRef = useRef<Editor['editor'] | null>(null);
+  const [isLoadingTinyEditor, setIsLoadingTinyEditor] = useState<boolean>(true);
   const [noteForm, setNoteForm] = useState<NoteForm>({
     name: note.name,
     noteText: note.noteText,
@@ -55,9 +57,12 @@ export const EditNoteModal: FC<IEditNoteProps> = ({ note }) => {
             symbolCount={countSymbolHelper(noteForm.name, noteForm.noteText)}
           />
         </div>
-
+        {isLoadingTinyEditor && <Skeleton className={styles.editorSkeleton} />}
         <Editor
-          onInit={(_, editor) => (tinyEditorRef.current = editor)}
+          onInit={(_, editor) => {
+            setIsLoadingTinyEditor(false);
+            return (tinyEditorRef.current = editor);
+          }}
           onChange={handleChangeEditor}
           initialValue={note.noteText}
           init={init}
@@ -65,7 +70,9 @@ export const EditNoteModal: FC<IEditNoteProps> = ({ note }) => {
       </div>
 
       <Button
-        disabled={note.name === noteForm.name && note.noteText === noteForm.noteText}
+        disabled={
+          (note.name === noteForm.name && note.noteText === noteForm.noteText) || !noteForm?.name
+        }
         onClick={handleEditNote}
       >
         Сохранить изменения

@@ -1,0 +1,44 @@
+.total_skeletons {
+  opacity: 0.7;
+  border-color: #edf2f7;
+
+  -webkit-animation: 0.8s linear infinite alternate total_skeleton_animation;
+  animation: 0.8s linear infinite alternate total_skeleton_animation;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  cursor: default;
+  color: transparent;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  background-color: rgba(0, 0, 0, 0.11);
+}
+
+@keyframes total_skeleton_animation {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes total_skeleton_animation {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}

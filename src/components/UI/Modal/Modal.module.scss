@@ -55,7 +55,7 @@
     z-index: 11;
     background-color: #ffff;
     border-radius: 20px;
-    box-shadow: 0 8px 16px rgba(37, 33, 41, 0.04), 0 0 6px rgba(37, 33, 41, 0.04);
+    box-shadow: 0 8px 16px rgb(37 33 41 / 24%), 0 0 6px rgba(37, 33, 41, 0.54);
     max-height: 80vh;
     overflow-y: scroll;
 
@@ -113,6 +113,13 @@
   &__header {
     padding: 16px 32px 0 32px;
     position: relative;
+    display: grid;
+    grid-template-columns: calc(100% - 40px) 32px;
+    gap: 8px;
+
+    @include respond(mobileS) {
+      padding: 16px;
+    }
   }
 
   &__title {

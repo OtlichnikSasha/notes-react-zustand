@@ -1,13 +1,13 @@
 .note {
-  border-radius: 6px;
-  padding: 12px;
-  box-shadow: inset 0px -4px 12px #6375ef33, inset 0px 1px 6px #6375ef66;
+  border-radius: 16px;
+  padding: 16px 12px;
+  box-shadow: inset 0px -4px 12px #94a5eb33, inset 0px 1px 6px #f3cdcd77, 0 1px 3px #7f7f7f;
   cursor: pointer;
-  height: 120px;
+  height: 130px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  background: #6375ef;
+  background: #f9f9f9;
 
   &__content {
     height: 60%;
@@ -30,7 +30,7 @@
     line-clamp: 1;
     -webkit-box-orient: vertical;
     max-width: 100%;
-    color: var(--Primary_Color);
+    color: var(--Dark_Primary_Color);
   }
 
   &__removeBtn {
@@ -48,14 +48,15 @@
       transition: background 0.3s;
 
       svg {
-        fill: rgb(250, 76, 76);
+        fill: rgb(255, 26, 26);
         transition: fill 0.3s;
       }
     }
 
     svg {
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
+      fill: #434343;
       transition: fill 0.3s;
     }
   }

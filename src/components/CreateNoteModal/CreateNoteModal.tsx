@@ -9,12 +9,14 @@ import { NoteModalHeader } from '../NoteModalHeader/NoteModalHeader';
 import { Editor } from '@tinymce/tinymce-react';
 import { init } from '../UI/TinyEditor/TinyEditor.constants';
 import { countSymbolHelper } from '@/helpers/countSymbol.helper';
+import { Skeleton } from '../UI/Skeleton/Skeleton';
 
 type NoteForm = Pick<NoteModel, 'name'> & Pick<NoteModel, 'noteText'>;
 
 export const CreateNoteModal = () => {
   const tinyEditorRef = useRef<Editor['editor'] | null>(null);
   const [noteForm, setNoteForm] = useState<NoteForm>({} as NoteForm);
+  const [isLoadingTinyEditor, setIsLoadingTinyEditor] = useState<boolean>(true);
   const addNote = useNotesStore((state) => state.addNote);
   const closeModal = useModalStore((state) => state.closeModal);
 
@@ -45,15 +47,19 @@ export const CreateNoteModal = () => {
             symbolCount={countSymbolHelper(noteForm?.name || '', noteForm?.noteText || '')}
           />
         </div>
+        {isLoadingTinyEditor && <Skeleton className={styles.editorSkeleton} />}
         <Editor
-          onInit={(_, editor) => (tinyEditorRef.current = editor)}
+          onInit={(_, editor) => {
+            setIsLoadingTinyEditor(false);
+            return (tinyEditorRef.current = editor);
+          }}
           onChange={handleChangeEditor}
           initialValue=''
           init={init}
         />
       </div>
 
-      <Button disabled={noteForm?.name?.length < 1} onClick={handleCreateNote}>
+      <Button disabled={!noteForm?.name} onClick={handleCreateNote}>
         Создать заметку
       </Button>
     </div>
