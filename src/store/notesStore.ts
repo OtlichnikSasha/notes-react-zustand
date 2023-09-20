@@ -8,7 +8,7 @@ interface NotesStoreState {
 }
 
 interface NotesStoreActions {
-  addNote: (noteData: Pick<NoteModel, 'name'> & Pick<NoteModel, 'noteText'>) => void;
+  addNote: (noteData: Pick<NoteModel, 'name' | 'noteText'>) => void;
   editNote: (note: NoteModel) => void;
   removeNote: (id: NoteModel['id']) => void;
 }
