@@ -1,3 +1,8 @@
+![image](https://github.com/OtlichnikSasha/notes-react-zustand/assets/71177045/6a603fb3-c579-49a1-90a5-416222f6422a)
+
+![image](https://github.com/OtlichnikSasha/notes-react-zustand/assets/71177045/2b806fd0-4869-45f2-ad1b-37c365e77ab0)
+
+
 Приложение заметки. Pet проект.
 Стек:
  - React + Typescript
