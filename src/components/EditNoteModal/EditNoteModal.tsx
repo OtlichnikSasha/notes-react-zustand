@@ -15,7 +15,7 @@ interface IEditNoteProps {
   note: NoteModel;
 }
 
-type NoteForm = Pick<NoteModel, 'name'> & Pick<NoteModel, 'noteText'>;
+type NoteForm = Pick<NoteModel, 'name' | 'noteText'>;
 
 export const EditNoteModal: FC<IEditNoteProps> = ({ note }) => {
   const tinyEditorRef = useRef<Editor['editor'] | null>(null);
