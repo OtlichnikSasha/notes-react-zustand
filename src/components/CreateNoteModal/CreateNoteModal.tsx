@@ -11,7 +11,7 @@ import { init } from '../UI/TinyEditor/TinyEditor.constants';
 import { countSymbolHelper } from '@/helpers/countSymbol.helper';
 import { Skeleton } from '../UI/Skeleton/Skeleton';
 
-type NoteForm = Pick<NoteModel, 'name'> & Pick<NoteModel, 'noteText'>;
+type NoteForm = Pick<NoteModel, 'name' | 'noteText'>;
 
 export const CreateNoteModal = () => {
   const tinyEditorRef = useRef<Editor['editor'] | null>(null);
