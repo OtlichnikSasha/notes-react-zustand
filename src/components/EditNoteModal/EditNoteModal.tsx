@@ -15,7 +15,7 @@ interface IEditNoteProps {
   note: NoteModel;
 }
 
-type NoteForm = Pick<NoteModel, 'name'> & Pick<NoteModel, 'noteText'>;
+type NoteForm = Pick<NoteModel, 'name' | 'noteText'>;
 
 export const EditNoteModal: FC<IEditNoteProps> = ({ note }) => {
   const tinyEditorRef = useRef<Editor['editor'] | null>(null);
@@ -48,7 +48,7 @@ export const EditNoteModal: FC<IEditNoteProps> = ({ note }) => {
   };
 
   return (
-    <div className={styles.modal}>
+    <form className={styles.modal}>
       <div className={styles.modal__form}>
         <div>
           <Input placeholder='Заголовок' value={noteForm.name} onChange={handleInputChange} />
@@ -77,6 +77,6 @@ export const EditNoteModal: FC<IEditNoteProps> = ({ note }) => {
       >
         Сохранить изменения
       </Button>
-    </div>
+    </form>
   );
 };

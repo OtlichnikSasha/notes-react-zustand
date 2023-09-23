@@ -7,14 +7,16 @@ import styles from './NoteItem.module.scss';
 import { ReactComponent as IconRemove } from '@/assets/images/icons/icon-remove.svg';
 import { motion } from 'framer-motion';
 import { useNotesStore } from '@/store/notesStore';
+import { getHighlightedText } from '@/helpers/getHighlightText.helper';
 
 interface INoteItemProps {
   note: NoteModel;
+  searchTerm?: string;
 }
 
-const dateFormat = 'DD MMMM HH:MM';
+const dateFormat = 'DD MMMM HH:mm';
 
-export const NoteItem: FC<INoteItemProps> = ({ note }) => {
+export const NoteItem: FC<INoteItemProps> = ({ note, searchTerm }) => {
   const handleOpenModal = useModalStore((state) => state.handleOpenModal);
   const removeNote = useNotesStore((state) => state.removeNote);
 
@@ -37,7 +39,9 @@ export const NoteItem: FC<INoteItemProps> = ({ note }) => {
       whileTap={{ scale: 0.95 }}
     >
       <div className={styles.note__header}>
-        <p className={styles.note__name}>{note.name}</p>
+        <p className={styles.note__name}>
+          {searchTerm ? getHighlightedText(note.name, searchTerm.trim(), '#3390ec') : note.name}
+        </p>
         <motion.button
           className={styles.note__removeBtn}
           whileTap={{ scale: 0.95 }}

@@ -1,4 +1,5 @@
 import { FC, ReactNode } from 'react';
+import cn from 'classnames';
 import styles from './NotFoundWrapper.module.scss';
 
 interface INotFoundWrapperProps {
@@ -6,6 +7,7 @@ interface INotFoundWrapperProps {
   icon?: ReactNode;
   description?: string;
   children?: ReactNode;
+  clasName?: string;
 }
 
 export const NotFoundWrapper: FC<INotFoundWrapperProps> = ({
@@ -13,9 +15,10 @@ export const NotFoundWrapper: FC<INotFoundWrapperProps> = ({
   title,
   children,
   description,
+  clasName,
 }) => {
   return (
-    <section className={styles.notFound}>
+    <section className={cn(styles.notFound, clasName)}>
       {icon && <div className={styles.notFound__icon}>{icon}</div>}
       <h3 className={styles.notFound__title}>{title}</h3>
       {description && <p className={styles.notFound__description}>{description}</p>}

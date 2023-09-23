@@ -7,5 +7,8 @@ export const countSymbolHelper = (
     ?.replace(/<\/?[^>]+(>|$)/g, '')
     ?.replace(/&nbsp;/g, '')
     ?.trim();
-  return Number(updatedName?.length) + Number(updatedNoteText?.length);
+
+  return (
+    Number(updatedName?.length) + Number((updatedNoteText?.length && updatedNoteText?.length) || 0)
+  );
 };

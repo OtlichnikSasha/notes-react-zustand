@@ -13,7 +13,7 @@ const symbolWordVariants = ['символ', 'символа', 'символов'
 const NoteModalHeaderComponent: FC<INoteHeaderProps> = ({ symbolCount, date }) => {
   return (
     <div className={styles.noteHeader}>
-      <p className={styles.noteHeader__text}>{dayjs(date).locale('ru').format('D MMMM HH:MM')}</p>
+      <p className={styles.noteHeader__text}>{dayjs(date).locale('ru').format('D MMMM HH:mm')}</p>
       <span className={styles.noteHeader__text}>|</span>
       <p className={styles.noteHeader__text}>
         {symbolCount} {determinateWordHelper(symbolCount, symbolWordVariants)}

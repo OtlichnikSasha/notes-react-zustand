@@ -11,7 +11,7 @@ import { init } from '../UI/TinyEditor/TinyEditor.constants';
 import { countSymbolHelper } from '@/helpers/countSymbol.helper';
 import { Skeleton } from '../UI/Skeleton/Skeleton';
 
-type NoteForm = Pick<NoteModel, 'name'> & Pick<NoteModel, 'noteText'>;
+type NoteForm = Pick<NoteModel, 'name' | 'noteText'>;
 
 export const CreateNoteModal = () => {
   const tinyEditorRef = useRef<Editor['editor'] | null>(null);
@@ -38,7 +38,7 @@ export const CreateNoteModal = () => {
   };
 
   return (
-    <div className={styles.modal}>
+    <form className={styles.modal} onSubmit={handleCreateNote}>
       <div className={styles.modal__form}>
         <div>
           <Input placeholder='Заголовок' value={noteForm?.name} onChange={handleChangeTitle} />
@@ -59,9 +59,7 @@ export const CreateNoteModal = () => {
         />
       </div>
 
-      <Button disabled={!noteForm?.name} onClick={handleCreateNote}>
-        Создать заметку
-      </Button>
-    </div>
+      <Button disabled={!noteForm?.name}>Создать заметку</Button>
+    </form>
   );
 };
